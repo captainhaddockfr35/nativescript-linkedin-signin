@@ -4,6 +4,6 @@ export declare class LinkedinSignin extends Common {
   // or..
   // take the ios or android .d.ts files and copy/paste them here
 
-  static init(clientId: string, clientSecret: string, redirectUri: string, scopes: Array<string>, context: any = null);
+  static init(clientId: string, clientSecret: string, redirectUri: string, scopes: Array<string>, context: any);
   static login(): Promise<LinkedinAuthResult>;
 }

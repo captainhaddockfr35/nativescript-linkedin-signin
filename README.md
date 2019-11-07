@@ -1,39 +1,65 @@
-# nativescript-linkedin-signin
+# Nativescript LinkedIn Auth
 
-Add your plugin badges here. See [nativescript-urlhandler](https://github.com/hypery2k/nativescript-urlhandler) for example.
+[![npm version](https://badge.fury.io/js/nativescript-linkedin-signin.svg)](http://badge.fury.io/js/nativescript-linkedin-signin)
 
-Then describe what's the purpose of your plugin. 
+NativeScript plugin for LinkedIn Auth. Use OAuth2 to sign in with LinkedIn. Use [this iOS lib](https://github.com/serhii-londar/LinkedInSignIn) and [this Android lib](https://github.com/pboulch/android-linkedin-auth). 
 
-In case you develop UI plugin, this is where you can add some screenshots.
-
-## (Optional) Prerequisites / Requirements
-
-Describe the prerequisites that the user need to have installed before using your plugin. See [nativescript-firebase plugin](https://github.com/eddyverbruggen/nativescript-plugin-firebase) for example.
 
 ## Installation
 
-Describe your plugin installation steps. Ideally it would be something like:
+Add the plugin 
 
 ```javascript
 tns plugin add nativescript-linkedin-signin
 ```
 
+### Android 
+
+Add this line into the AndroidManifest.xml 
+
+```
+<activity android:name="com.teammobile.linkedinsignin.ui.LinkedinSignInActivity"/>
+```
+
 ## Usage 
-
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
 	
-	```javascript
-    Usage code snippets here
-    ```)
+```javascript
+    import { Component, OnInit } from "@angular/core";
+    import { LinkedinSignin } from "nativescript-linkedin-signin";
+    import * as Application from "tns-core-modules/application";
+    import * as utilsModule from "tns-core-modules/utils/utils";
+    import { isAndroid } from "tns-core-modules/platform/platform";
 
-## API
 
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
-    
-| Property | Default | Description |
-| --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
+    @Component({
+        selector: "Home",
+        templateUrl: "./home.component.html"
+    })
+    export class HomeComponent implements OnInit {
+
+        constructor() {
+        }
+
+        ngOnInit(): void {
+            // Init your component properties here.
+            if(isAndroid){
+                LinkedinSignin.init("<CLIENT_ID>", "<CLIENT_SECRET>", "<REDIRECT_URI>", new Array<string>(), utilsModule.ad.getApplicationContext());
+            } else {
+                LinkedinSignin.init("<CLIENT_ID>", "<CLIENT_SECRET>", "<REDIRECT_URI>", new Array<string>(), Application.ios.rootController);
+            }
+        }
+
+        coLinkedin(): void {
+            LinkedinSignin.login().then(item => {
+                console.dir(item);
+                alert(item.token.accessToken);
+            }).catch((error)=>{
+                alert("FAIL : "+error.error);
+                console.dir(error);
+            });
+        }
+    }
+```
     
 ## License
 

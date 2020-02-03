@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-linkedin-signin",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "NativeScript Linkedin Auth plugin",
 	"main": "linkedin-signin",
 	"typings": "index.d.ts",

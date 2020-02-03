@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
             if(isAndroid){
                 LinkedinSignin.init("<CLIENT_ID>", "<CLIENT_SECRET>", "<REDIRECT_URI>", new Array<string>(), utilsModule.ad.getApplicationContext());
             } else {
-                LinkedinSignin.init("<CLIENT_ID>", "<CLIENT_SECRET>", "<REDIRECT_URI>", new Array<string>(), Application.ios.rootController);
+                LinkedinSignin.init("7794dkm4obfpn3", "G2UPIlvwQ7zw6jIW", "http://api.regionsjob.com/v1/Account/LinkedInCallback", new Array<string>(), Application.ios.rootController);
             }
             
         }, 1000);

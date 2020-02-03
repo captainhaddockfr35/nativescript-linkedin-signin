@@ -1,1 +1,1 @@
-pod 'LinkedInSignIn'
+pod 'LinkedInSignIn', :git => 'https://github.com/serhii-londar/LinkedInSignIn.git'

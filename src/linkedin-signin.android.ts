@@ -18,7 +18,6 @@ export class LinkedinSignin extends Common {
         if(scopes == null || scopes.length ==0){
             arrayJava.add("r_emailaddress");
             arrayJava.add("r_liteprofile");
-            arrayJava.add("w_member_social");
         }
         scopes.forEach(val => arrayJava.add(val));
 
